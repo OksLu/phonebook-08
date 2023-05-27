@@ -1,16 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout';
 import { Suspense, lazy, useEffect } from 'react';
-import { LogIn } from 'pages/Register';
 import PublicRoute from './PublicRoute/PublicRoute';
-import Contacts from 'pages/ContactsPage';
 import { useDispatch } from 'react-redux';
 import { currentUser } from 'redux/auth/authApi';
-import { LoginForm } from './LoginForm/LoginForm';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-import { SignUpForm } from './SignUpForm/SignUpForm';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
+const LoginPage = lazy(() => import('../pages/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage'));
+
 export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -25,7 +25,7 @@ export const App = () => {
           element={
             <PublicRoute>
               <Suspense>
-                <LoginForm />
+                <LoginPage />
               </Suspense>
             </PublicRoute>
           }
@@ -35,7 +35,7 @@ export const App = () => {
           element={
             <PublicRoute>
               <Suspense>
-                <SignUpForm />
+                <RegisterPage />
               </Suspense>
             </PublicRoute>
           }
@@ -44,7 +44,7 @@ export const App = () => {
           path="contacts"
           element={
             <PrivateRoute>
-              <Contacts />
+              <ContactsPage />
             </PrivateRoute>
           }
         />

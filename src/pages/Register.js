@@ -1,7 +1,7 @@
-import { LoginForm } from 'components/LoginForm/LoginForm';
-import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/authApi';
+const { SignUpForm } = require('components/SignUpForm/SignUpForm');
 
-export const LogIn = () => {
-  return <LoginForm />;
+const Register = () => {
+  return <SignUpForm />;
 };
+
+export default Register;

@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import css from '../SignUpForm/SignUpForm.module.css';
 import { login } from 'redux/auth/authApi';
-import { Link, Navigate } from 'react-router-dom';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
