@@ -1,0 +1,85 @@
+.container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loginCard {
+  margin-top: 124px;
+  width: 400px;
+  padding: 60px 30px 32px;
+  border-radius: 1.25rem;
+  background: transparent;
+  text-align: center;
+  transition: 0.4s;
+}
+.loginForm {
+  width: 100%;
+  margin: 0;
+  display: grid;
+}
+.input {
+  border: 1.5px solid #000000;
+  outline: none;
+  max-width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  background: transparent;
+  color: inherit;
+  border-radius: 6px;
+  margin: 8px 0;
+  font-family: inherit;
+  text-align: left;
+  font-size: 18px;
+  transition: 0.4s;
+}
+
+.btn {
+  font-size: 24px;
+  font-weight: 400;
+  background: transparent;
+  border: none;
+  padding: 1em 1.5em;
+  color: #000000;
+  text-transform: uppercase;
+  position: relative;
+  transition: 0.5s ease;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #b2ebf2;
+  transition: 0.5s ease;
+}
+
+.btn:hover {
+  color: #1e1e2b;
+  transition-delay: 0.5s;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  background-color: #b2ebf2;
+  transition: 0.4s ease;
+  z-index: -1;
+}
+
+.btn:hover::after {
+  height: 100%;
+  transition-delay: 0.4s;
+  color: aliceblue;
+}

@@ -1,0 +1,79 @@
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 18px;
+  margin-top: 18px;
+}
+.modalInput {
+  border: 1.5px solid #000000;
+  outline: none;
+  width: 460px;
+  height: 56px;
+  padding: 0 16px;
+  background: transparent;
+  color: inherit;
+  border-radius: 6px;
+  margin: 8px 0;
+  font-family: inherit;
+  text-align: left;
+  font-size: 18px;
+  transition: 0.4s;
+}
+
+.label {
+  color: var(--fourth);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.16;
+}
+.addBtn {
+  font-size: 24px;
+  font-weight: 400;
+  background: transparent;
+  border: none;
+  padding: 1em 1.5em;
+  color: #000000;
+  text-transform: uppercase;
+  position: relative;
+  transition: 0.5s ease;
+}
+
+.addBtn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #1fddff;
+  transition: 0.5s ease;
+}
+
+.addBtn:hover {
+  color: #1e1e2b;
+  transition-delay: 0.5s;
+}
+
+.addBtn:hover::before {
+  width: 100%;
+}
+
+.addBtn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  background-color: #1fddff;
+  transition: 0.4s ease;
+  z-index: -1;
+}
+
+.addBtn:hover::after {
+  height: 100%;
+  transition-delay: 0.4s;
+  color: aliceblue;
+}

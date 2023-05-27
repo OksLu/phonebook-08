@@ -1,0 +1,59 @@
+.contactSection {
+  width: 490px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  margin: 100px auto 12px;
+  border-radius: 6px;
+}
+
+.modalBtn {
+  font-size: 24px;
+  font-weight: 400;
+  background: transparent;
+  border: none;
+  padding: 1em 1.5em;
+  color: #000000;
+  text-transform: uppercase;
+  position: relative;
+  transition: 0.5s ease;
+}
+.modalBtn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #b2ebf2;
+  transition: 0.5s ease;
+}
+
+.modalBtn:hover {
+  color: #1e1e2b;
+  transition-delay: 0.5s;
+}
+
+.modalBtn:hover::before {
+  width: 100%;
+}
+
+.modalBtn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  background-color: #b2ebf2;
+  transition: 0.4s ease;
+  z-index: -1;
+}
+
+.modalBtn:hover::after {
+  height: 100%;
+  transition-delay: 0.4s;
+  color: aliceblue;
+}
