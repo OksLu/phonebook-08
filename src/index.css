@@ -51,3 +51,9 @@ a {
   line-height: 1.71;
   outline: transparent;
 }
+b {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

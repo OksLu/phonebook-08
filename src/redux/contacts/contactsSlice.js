@@ -1,5 +1,10 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addContact, deleteContact, fetchContacts } from './contactsApi';
+import {
+  addContact,
+  deleteContact,
+  fetchContacts,
+  updateContact,
+} from './contactsApi';
 
 const STATUS = {
   PENDING: 'pending',
@@ -7,7 +12,7 @@ const STATUS = {
   REJECTED: 'rejected',
 };
 
-const arrThunks = [fetchContacts, addContact, deleteContact];
+const arrThunks = [fetchContacts, addContact, deleteContact, updateContact];
 
 const getAction = type => isAnyOf(...arrThunks.map(el => el[type]));
 
@@ -48,6 +53,14 @@ const contactsSlice = createSlice({
           contact => contact.id === payload.id
         );
         state.items.splice(index, 1);
+        state.error = null;
+      })
+      .addCase(updateContact.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        const index = state.items.findIndex(
+          contact => contact.id === payload.id
+        );
+        state.items.splice(index, 1, payload);
         state.error = null;
       })
       .addMatcher(getAction(PENDING), handlePending)

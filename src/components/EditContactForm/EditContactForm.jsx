@@ -1,34 +1,41 @@
-import css from './ContactForm.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contacts/contactsApi';
-import { getContacts } from 'redux/contacts/selectors';
+import { useState } from 'react';
+import css from '../contactsForm/ContactForm.module.css';
+import { useDispatch } from 'react-redux';
+import { updateContact } from 'redux/contacts/contactsApi';
 
-export const ContactsForm = ({ closeModal }) => {
+export const EditContactForm = ({ id, name, phone, closeModal }) => {
+  const [updatedName, setUpdatedName] = useState(name);
+  const [updatedPhone, setUpdatedPhone] = useState(phone);
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
-    const newContact = {
-      name: form.elements.name.value,
-      number: form.elements.number.value,
-    };
-    if (contacts.find(contact => contact.name === newContact.name)) {
-      alert('This contact already exist');
-    } else {
-      dispatch(addContact(newContact));
+  const handleChange = e => {
+    const { name, value } = e.target;
+    if (name === 'name') {
+      setUpdatedName(value);
     }
-
-    closeModal();
+    if (name === 'number') {
+      setUpdatedPhone(value);
+    }
   };
 
+  const handleEditContact = () => {
+    const updatedContact = {
+      id,
+      name: updatedName,
+      number: updatedPhone,
+    };
+    console.log(updatedContact);
+    dispatch(updateContact(updatedContact));
+    closeModal();
+  };
   return (
-    <form className={css.modalForm} onSubmit={handleSubmit}>
+    <form className={css.modalForm} onSubmit={handleEditContact}>
       <label className={css.label} htmlFor="name">
         Name
       </label>
       <input
+        value={updatedName}
+        onChange={handleChange}
         id="name"
         className={css.modalInput}
         type="text"
@@ -42,6 +49,8 @@ export const ContactsForm = ({ closeModal }) => {
         Number
       </label>
       <input
+        value={updatedPhone}
+        onChange={handleChange}
         id="number"
         className={css.modalInput}
         type="tel"
@@ -52,7 +61,7 @@ export const ContactsForm = ({ closeModal }) => {
         autoComplete="off"
       />
       <button className={css.addBtn} type="submit">
-        Add
+        EDIT
       </button>
     </form>
   );

@@ -23,3 +23,10 @@
 .close:hover {
   fill: red;
 }
+
+.edit {
+  transition: fill ease-in linear;
+}
+.edit:hover {
+  fill: green;
+}
